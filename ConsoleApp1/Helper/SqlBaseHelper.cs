@@ -11,6 +11,10 @@ namespace ConsoleApp1.Helper
     /// </summary>
     public class SqlBaseHelper
     {
+        /// <summary>
+        /// 获取Wfm_SqlServer连接
+        /// </summary>
+        /// <returns></returns>
         public SqlConnection GetWfmSqlServerConnection()
         {
             var ConnectionString = ConfigurationManager.ConnectionStrings["wfm_sqlserver"].ConnectionString;
