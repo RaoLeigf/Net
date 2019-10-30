@@ -1,0 +1,8 @@
+# Windows:
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+.vs/*
+ConsoleApp1/obj/*
+ConsoleApp1/bin/*
