@@ -50,18 +50,17 @@ namespace ConsoleApp1
             //    //File.Copy($"{path}\\Rules\\{prefix2}{p}", $"{path2}\\I6Rules\\{prefix2}{p}", true);//允许覆盖目的地的同名文件
             //});
             #endregion
-
             #region sqlServer数据库连接
-            using(var con = new SqlServerHelper().Connection)
+            using (var con = new Helper.SqlBaseHelper().GetWfmSqlServerConnection())
             {
                 var sql = @"SELECT  rightkey
-FROM fg3_userrights
-WHERE userId =  113191025000001 AND rightkey NOT IN (SELECT rightkey FROM fg3_userrights WHERE userId = 113191025000003)";
+                            FROM fg3_userrights
+                            WHERE userId =  113191025000001 AND rightkey NOT IN (SELECT rightkey FROM fg3_userrights WHERE userId = 113191025000003)";
 
                 var res = con.Query<string>(sql);
 
                 var s = string.Empty;
-                foreach(var r in res)
+                foreach (var r in res)
                 {
                     s += (r + ",");
                 }
@@ -73,42 +72,5 @@ WHERE userId =  113191025000001 AND rightkey NOT IN (SELECT rightkey FROM fg3_us
 
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public class SqlServerHelper
-        {
-            /// <summary>
-            /// 
-            /// </summary>
-            static string ConnectionString = "Server=10.0.20.46;Database=NG0001;User Id=sa;Password=123456;";
-
-            /// <summary>
-            /// shuj
-            /// </summary>
-            public SqlConnection Connection { get;}
-
-            /// <summary>
-            /// 构造函数
-            /// </summary>
-            public SqlServerHelper()
-            {
-                this.Connection = new SqlConnection(ConnectionString);
-            }
-        }
-        
-        //public static string ChangeText(string s)
-        //{
-        //    var f = s[0];
-        //    s = s.Remove(0, 1).Insert(0, Char.ToUpper(f).ToString());
-        //    while (s.Contains("_"))
-        //    {
-        //       var index = s.LastIndexOf("_");
-        //        char c = s[index+1];
-        //        s = s.Remove(index, 2).Insert(index, Char.ToUpper(c).ToString());
-        //    }
-
-        //    return s;
-        //}
-    }
+    }       
 }
