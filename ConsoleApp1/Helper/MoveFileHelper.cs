@@ -18,7 +18,7 @@ namespace ConsoleApp1.Helper
         /// <param name="soure"></param>
         /// <param name="target"></param>
         /// <param name="prefixs"></param>
-        public void MoveG6HDll()
+        public static void MoveG6HDll()
         {
             string source = ConfigurationManager.AppSettings["g6hFileSource"];
             string target = ConfigurationManager.AppSettings["g6hFileTarget"];

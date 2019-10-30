@@ -1,4 +1,6 @@
-﻿using Dapper;
+﻿using ConsoleApp1.Helper;
+using ConsoleApp1.Model;
+using Dapper;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -10,15 +12,16 @@ namespace ConsoleApp1
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
 
-            #region 快速迁移
-            new Helper.MoveFileHelper().MoveG6HDll();
+            #region 快速迁移Dll
+            //MoveFileHelper.MoveG6HDll();
             #endregion
 
             #region sqlServer数据库连接
-            //using (var con = new Helper.SqlBaseHelper().GetWfmSqlServerConnection())
+
+            //using (var con = SqlBaseHelper.GetWfmSqlServerConnection())
             //{
             //    var sql = @"SELECT  rightkey
             //                FROM fg3_userrights
@@ -35,6 +38,20 @@ namespace ConsoleApp1
             //}
 
             #endregion
+
+            #region 连接oracle数据库
+            //using (var con = SqlBaseHelper.GetDqwOracleConnection())
+            //{
+            //    var sql = "select P_Name Name,P_Type Type from NG0002.GIA_ITEMS";
+            //    var result = con.Query<GiaItemModel>(sql);
+            //    foreach(var r in result)
+            //    {
+            //        Console.WriteLine(r.Name);
+            //    }
+            //}
+
+            #endregion
+
             Console.ReadLine();
 
         }
