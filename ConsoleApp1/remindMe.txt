@@ -1,1 +1,2 @@
-﻿
+﻿1.Ext 文档 http://extjs-doc-cn.github.io/ext4api/
+2.Js 方法  https://www.caniuse.com

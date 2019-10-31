@@ -19,6 +19,10 @@ namespace ConsoleApp1
             //MoveFileHelper.MoveG6HDll();
             #endregion
 
+            #region 快速迁移Orm
+            MoveFileHelper.MoveOrmFile();
+            #endregion
+
             #region sqlServer数据库连接
 
             //using (var con = SqlBaseHelper.GetWfmSqlServerConnection())

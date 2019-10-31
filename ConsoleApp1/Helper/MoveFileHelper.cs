@@ -20,6 +20,10 @@ namespace ConsoleApp1.Helper
         /// <param name="prefixs"></param>
         public static void MoveG6HDll()
         {
+            if (!IsSure())
+            {
+                return;
+            }
             string source = ConfigurationManager.AppSettings["g6hFileSource"];
             string target = ConfigurationManager.AppSettings["g6hFileTarget"];
             string prefixsString = ConfigurationManager.AppSettings["g6hFilePrefix"];
@@ -60,5 +64,32 @@ namespace ConsoleApp1.Helper
                 });
             });
         }
+
+        /// <summary>
+        /// 移动生成的Orm文件
+        /// </summary>
+        public static void MoveOrmFile()
+        {
+            var source = @"\\10.0.10.11\OutFile\ORMFiles\GJS3.JS\GiaP6Evaluate";
+            var files = Directory.GetFiles(source, "*.xml");
+            foreach(var f in files)
+            {
+                var a = File.ReadAllText(f);
+                File.AppendAllText(@"C:\Users\raolei\Desktop\新建文件夹\test.xml", a);
+                Console.WriteLine(f);
+            }
+            //var target = @"C:\Users\raolei\Desktop\新建文件夹\P6EvaluateDac.xml";
+            //File.Copy(source, target);
+        }
+        /// <summary>
+        /// 是否确认
+        /// </summary>
+        /// <returns></returns>
+        private static bool IsSure()
+        {
+            Console.WriteLine("Are you Sure ?(Y/N)");
+            var check = Console.ReadLine();
+            return (String.Equals(check, "Y", StringComparison.CurrentCultureIgnoreCase)|| String.Equals(check, "Yes", StringComparison.CurrentCultureIgnoreCase));
+        } 
     }
 }
