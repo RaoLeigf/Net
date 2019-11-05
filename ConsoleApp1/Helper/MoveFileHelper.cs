@@ -63,6 +63,8 @@ namespace ConsoleApp1.Helper
                     File.Copy($"{source}\\Rules\\{prefix}{p}", $"{target}\\I6Rules\\{prefix}{p}", true);//允许覆盖目的地的同名文件
                 });
             });
+
+            Console.WriteLine("Moving Finished !");
         }
 
         /// <summary>

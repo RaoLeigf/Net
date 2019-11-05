@@ -16,11 +16,11 @@ namespace ConsoleApp1
         {
 
             #region 快速迁移Dll
-            //MoveFileHelper.MoveG6HDll();
+            MoveFileHelper.MoveG6HDll();
             #endregion
 
             #region 快速迁移Orm
-            MoveFileHelper.MoveOrmFile();
+            //MoveFileHelper.MoveOrmFile();
             #endregion
 
             #region sqlServer数据库连接
@@ -56,6 +56,9 @@ namespace ConsoleApp1
 
             #endregion
 
+            #region 转换大小写
+            //Console.WriteLine(StringHelper.ToLower(string.Empty));
+            #endregion
             Console.ReadLine();
 
         }
