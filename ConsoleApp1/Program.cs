@@ -1,6 +1,6 @@
 ﻿using ConsoleApp1.Helper;
 using ConsoleApp1.Model;
-using Dapper;
+//using Dapper;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -16,7 +16,7 @@ namespace ConsoleApp1
         {
 
             #region 快速迁移Dll
-            MoveFileHelper.MoveG6HDll();
+            //MoveFileHelper.MoveG6HDll();
             #endregion
 
             #region 快速迁移Orm
@@ -58,6 +58,10 @@ namespace ConsoleApp1
 
             #region 转换大小写
             //Console.WriteLine(StringHelper.ToLower(string.Empty));
+            #endregion
+
+            #region 导出Excel
+            ExcelHelper.exportExcel();
             #endregion
             Console.ReadLine();
 
