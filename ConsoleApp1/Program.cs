@@ -16,7 +16,7 @@ namespace ConsoleApp1
         {
 
             #region 快速迁移Dll
-            //MoveFileHelper.MoveG6HDll();
+            MoveFileHelper.MoveG6HDll();
             #endregion
 
             #region 快速迁移Orm
@@ -61,7 +61,7 @@ namespace ConsoleApp1
             #endregion
 
             #region 导出Excel
-            ExcelHelper.exportExcel();
+            //ExcelHelper.exportExcel();
             #endregion
             Console.ReadLine();
 
