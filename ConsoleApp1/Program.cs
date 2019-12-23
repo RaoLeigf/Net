@@ -14,9 +14,17 @@ namespace ConsoleApp1
     {
         static void Main()
         {
+            #region 测试
+            for(; ; )
+            {
+                var s = Console.ReadLine();
+                Console.WriteLine(ChineseNumSortHelper.ConvertToString(int.Parse(s)));
+            }
+            
+            #endregion
 
             #region 快速迁移Dll
-            MoveFileHelper.MoveG6HDll();
+            //MoveFileHelper.MoveG6HDll();
             #endregion
 
             #region 快速迁移Orm
@@ -63,6 +71,18 @@ namespace ConsoleApp1
             #region 导出Excel
             //ExcelHelper.exportExcel();
             #endregion
+
+            #region 导出Excel
+            //var data = new List<string> { "01", "02", "0101", "0201", "0102" };
+            //data.Sort();
+
+            //data.ForEach(p =>
+            //{
+            //    Console.WriteLine(p);
+            //});
+            //
+            #endregion
+
             Console.ReadLine();
 
         }
