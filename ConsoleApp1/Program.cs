@@ -1,5 +1,7 @@
 ﻿using ConsoleApp1.Helper;
 using ConsoleApp1.Model;
+using ConsoleApp1.Model.Demo;
+using Dapper;
 //using Dapper;
 using System;
 using System.Collections.Generic;
@@ -14,13 +16,13 @@ namespace ConsoleApp1
     {
         static void Main()
         {
-            #region 测试
-            for(; ; )
-            {
-                var s = Console.ReadLine();
-                Console.WriteLine(ChineseNumSortHelper.ConvertToString(int.Parse(s)));
-            }
-            
+            #region 中文数字转换
+            //for(; ; )
+            //{
+            //    var s = Console.ReadLine();
+            //    Console.WriteLine(ChineseNumSortHelper.ConvertToString(int.Parse(s)));
+            //}
+
             #endregion
 
             #region 快速迁移Dll
@@ -61,6 +63,19 @@ namespace ConsoleApp1
             //        Console.WriteLine(r.Name);
             //    }
             //}
+
+            #endregion
+
+            #region 连接MySql数据库
+            using (var con = SqlBaseHelper.GetAliyunMySqlConnection())
+            {
+                var sql = "select * from Test_User where isdelete = 0";
+                var result = con.Query<TestUserModel>(sql);
+                foreach (var r in result)
+                {
+                    Console.WriteLine(r.Name);
+                }
+            }
 
             #endregion
 

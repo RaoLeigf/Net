@@ -1,4 +1,5 @@
-﻿using Oracle.ManagedDataAccess.Client;
+﻿using MySql.Data.MySqlClient;
+using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -32,6 +33,16 @@ namespace ConsoleApp1.Helper
             var connection = new OracleConnection(connectionString);
             connection.Open();
             return connection;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static MySqlConnection GetAliyunMySqlConnection()
+        {
+            var connectionString = ConfigurationManager.ConnectionStrings["aliyunmysql"].ConnectionString;
+            return new MySqlConnection(connectionString);
         }
     }
 }
