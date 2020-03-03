@@ -68,20 +68,72 @@ namespace ConsoleApp1.Helper
         }
 
         /// <summary>
-        /// 移动生成的Orm文件
+        /// 移动G6HDll
         /// </summary>
-        public static void MoveOrmFile()
+        /// <param name="soure"></param>
+        /// <param name="target"></param>
+        /// <param name="prefixs"></param>
+        public static void MoveMSYHDll()
         {
-            var source = @"\\10.0.10.11\OutFile\ORMFiles\GJS3.JS\GiaP6Evaluate";
-            var files = Directory.GetFiles(source, "*.xml");
-            foreach(var f in files)
+            if (!IsSure())
             {
-                var a = File.ReadAllText(f);
-                File.AppendAllText(@"C:\Users\raolei\Desktop\新建文件夹\test.xml", a);
-                Console.WriteLine(f);
+                return;
             }
-            //var target = @"C:\Users\raolei\Desktop\新建文件夹\P6EvaluateDac.xml";
-            //File.Copy(source, target);
+            string source = ConfigurationManager.AppSettings["msyhFileSource"];
+            string target = ConfigurationManager.AppSettings["msyhFileTarget"];
+            string target2 = ConfigurationManager.AppSettings["msyhFileTarget2"];
+            //string prefixsString = ConfigurationManager.AppSettings["g6hFilePrefix"];
+            var prefixs = new List<string>
+            {
+                "GQT3.QT.",
+                "GXM3.XM."
+            }; ;
+
+            List<string> binFileNames = new List<string>
+            {
+                "Controller.dll",
+                "Model.dll"
+            };
+
+            List<string> ruleFileNames = new List<string>
+            {
+                "Dac.dll",
+                "Dac.Interface.dll",
+                "Facade.dll",
+                "Facade.Interface.dll",
+                "Rule.dll",
+                "Rule.Interface.dll",
+                "Service.dll",
+                "Service.Interface.dll"
+            };
+
+            prefixs.ForEach(prefix =>
+            {
+                Console.WriteLine($"{source}\\bin\\Enterprise3.WebApi.{prefix}Controller.dll  to {target}\\bin\\Enterprise3.WebApi.{prefix}Controller.dll");
+                File.Copy($"{source}\\bin\\Enterprise3.WebApi.{prefix}Controller.dll", $"{target}\\bin\\Enterprise3.WebApi.{prefix}Controller.dll", true);//允许覆盖目的地的同名文件
+                File.Copy($"{source}\\bin\\Enterprise3.WebApi.{prefix}Controller.dll", $"{target2}\\bin\\Enterprise3.WebApi.{prefix}Controller.dll", true);//允许覆盖目的地的同名文件
+                
+                Console.WriteLine($"{source}\\bin\\Enterprise3.WebApi.{prefix}Model.dll  to {target}\\bin\\Enterprise3.WebApi.{prefix}Model.dll");
+                File.Copy($"{source}\\bin\\Enterprise3.WebApi.{prefix}Model.dll", $"{target}\\bin\\Enterprise3.WebApi.{prefix}Model.dll", true);//允许覆盖目的地的同名文件
+                File.Copy($"{source}\\bin\\Enterprise3.WebApi.{prefix}Model.dll", $"{target2}\\bin\\Enterprise3.WebApi.{prefix}Model.dll", true);//允许覆盖目的地的同名文件
+                //移动bin
+                binFileNames.ForEach(p =>
+                {
+                    Console.WriteLine($"{source}\\bin\\{prefix}{p}  to {target}\\bin\\{prefix}{p}");
+                    File.Copy($"{source}\\bin\\{prefix}{p}", $"{target}\\bin\\{prefix}{p}", true);//允许覆盖目的地的同名文件
+                    File.Copy($"{source}\\bin\\{prefix}{p}", $"{target2}\\bin\\{prefix}{p}", true);//允许覆盖目的地的同名文件
+                });
+
+                //移动rule
+                ruleFileNames.ForEach(p =>
+                {
+                    Console.WriteLine($"{source}\\Rules\\{prefix}{p}  to {target}\\I6Rules\\{prefix}{p}");
+                    File.Copy($"{source}\\Rules\\{prefix}{p}", $"{target}\\System\\{prefix}{p}", true);//允许覆盖目的地的同名文件
+                    File.Copy($"{source}\\Rules\\{prefix}{p}", $"{target2}\\System\\{prefix}{p}", true);//允许覆盖目的地的同名文件
+                });
+            });
+
+            Console.WriteLine("Moving Finished !");
         }
         /// <summary>
         /// 是否确认

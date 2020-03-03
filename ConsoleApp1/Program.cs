@@ -16,6 +16,8 @@ namespace ConsoleApp1
     {
         static void Main()
         {
+
+
             #region 中文数字转换
             //for(; ; )
             //{
@@ -27,6 +29,7 @@ namespace ConsoleApp1
 
             #region 快速迁移Dll
             //MoveFileHelper.MoveG6HDll();
+            MoveFileHelper.MoveMSYHDll();
             #endregion
 
             #region 快速迁移Orm
@@ -67,15 +70,20 @@ namespace ConsoleApp1
             #endregion
 
             #region 连接MySql数据库
-            using (var con = SqlBaseHelper.GetAliyunMySqlConnection())
-            {
-                var sql = "select * from Test_User where isdelete = 0";
-                var result = con.Query<TestUserModel>(sql);
-                foreach (var r in result)
-                {
-                    Console.WriteLine(r.Name);
-                }
-            }
+//            using (var con = SqlBaseHelper.GetAliyunMySqlConnection())
+//            {
+//                var sql = @"SELECT ifnull(age,null) SecondHighestSalary 
+//FROM Test_User
+//ORDER BY age desc
+//limit 4,1";
+//                var sql2 = @"SELECT ifnull((select distinct age from Test_User order by age desc limit 4,1),null) age";
+//                var result = con.Query<TestUserModel>(sql);
+//                var result2 = con.Query<TestUserModel>(sql2);
+//                foreach (var r in result)
+//                {
+//                    Console.WriteLine(r.Name);
+//                }
+//            }
 
             #endregion
 
@@ -87,7 +95,7 @@ namespace ConsoleApp1
             //ExcelHelper.exportExcel();
             #endregion
 
-            #region 导出Excel
+            #region 字符串排序
             //var data = new List<string> { "01", "02", "0101", "0201", "0102" };
             //data.Sort();
 
@@ -96,6 +104,14 @@ namespace ConsoleApp1
             //    Console.WriteLine(p);
             //});
             //
+            #endregion
+
+            #region 乐扣
+            //LeCodeHelper.Q_1(new int[] { 3, 2, 4},6);
+            #endregion
+
+            #region 定时任务
+            //QuartzHelper.Run();
             #endregion
 
             Console.ReadLine();

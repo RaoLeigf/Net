@@ -54,5 +54,18 @@ namespace ConsoleApp1.Helper
             }
             return result;
         }
+
+        public static int[] Q_1(int[] nums, int target)
+        {
+            for (int i = 0; i < nums.Length; i++){
+                var index = Array.IndexOf(nums, target - nums[i]);
+                if(index != -1 && index != i)
+                {
+                    return new int[] { i , index};
+                }
+            }
+
+            return new int[] { 0,1 };
+        }
     }
 }
