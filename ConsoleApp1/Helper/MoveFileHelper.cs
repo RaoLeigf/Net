@@ -86,7 +86,8 @@ namespace ConsoleApp1.Helper
             var prefixs = new List<string>
             {
                 "GQT3.QT.",
-                "GXM3.XM."
+                "GXM3.XM.",
+                "GSP3.SP."
             }; ;
 
             List<string> binFileNames = new List<string>
