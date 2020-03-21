@@ -87,7 +87,8 @@ namespace ConsoleApp1.Helper
             {
                 "GQT3.QT.",
                 "GXM3.XM.",
-                "GSP3.SP."
+                "GSP3.SP.",
+                "GYS3.YS."
             }; ;
 
             List<string> binFileNames = new List<string>
